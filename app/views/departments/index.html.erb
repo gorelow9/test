@@ -1,0 +1,47 @@
+
+<p>
+	<%= link_to "Employees", employees_path %>  <%= link_to "Report", department_report_path%>
+</p>
+<p>
+	<%= link_to "Add new department", {:action => 'new' } %>
+</p>
+	<table style="border-spacing: 5px;">
+		<tr>
+		 	<th colspan="3"> <%= "Departments" %> </th>
+		</tr>
+		<tr>
+			<th>
+				Name
+			</th>
+			<th>
+				Date of foundation
+			</th>
+			<th>
+				Date of disbandment
+			</th>
+			<th>
+			</th>
+			<th>
+			</th>
+		</tr>
+		<% @departments.each do |department| %>
+		<tr>
+			<td>
+				<%= department.names.values.last %>
+			</td>
+			<td>
+				<%= department.foundation %>
+			</td>
+			<td>
+				<%= department.disbandment %>
+			</td>
+			<td>
+				<%= link_to "Edit", edit_department_path(department) %>
+			</td>
+			<td>
+				<%= link_to "Change name", department_change_name_path(department) %>
+			</td>
+		</tr>
+		<%end%>
+	</table>
+

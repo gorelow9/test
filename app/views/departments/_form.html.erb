@@ -1,0 +1,17 @@
+<%= form_for Department.new do |f| %>
+
+	<%= f.label "Name" %>
+	<%= f.text_field :current_name %> <br>
+
+	<%= f.label 'Date of name changing' %>
+	  <%= f.date_field :date, as: :date, value: Date.today%><br>
+
+  <%= f.label 'Date of foundation' %>
+  <%= f.date_field :foundation, as: :date, value: Date.today%><br>
+
+  <%= f.label 'Date of disbandment' %>
+  <%= f.date_field :disbandment, as: :date %><br>
+
+  <%= f.submit "Submit department" %>
+
+<% end %>

@@ -1,0 +1,14 @@
+<%= form_for @employee do |f| %>
+
+  <%= f.label "First name" %>
+	<%= f.text_field :first_name, value: "#{@employee.FIO.split[0]}" %> <br>
+
+	<%= f.label "Last name" %>
+	<%= f.text_field :last_name, value: "#{@employee.FIO.split[1]}"  %> <br>
+
+	<%= f.label "Third name" %>
+	<%= f.text_field :third_name, value: "#{@employee.FIO.split[2]}"  %> <br>
+
+  <%= f.submit "Submit employee" %>
+
+<% end %>

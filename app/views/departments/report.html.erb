@@ -1,0 +1,52 @@
+<%= form_tag '/report', method: :get do %>
+  <%= date_field_tag(:date, @date)  %>
+
+  <%= submit_tag 'Make report' %>
+<% end %>
+<table>
+	<tr>
+		 <th colspan="2"> <%= "Report" %> </th>
+	</tr>
+<tr>
+	<th>
+		Name of department
+	</th>
+	<th>
+		Employees
+	</th>
+</tr>
+<% @departments.each do |department| %>
+<% name = "" %>
+	<% dates = department.names.keys.sort!.reverse%>
+	<% dates.each_with_index do |value, index| %>
+			<% if index == dates.count-1 %>
+			<% elsif index == 0 %>
+				<% if @date >= value  %>
+					<% name = department.names[value] %>
+				<%end%>
+				<% if department.names.keys.count == 2%>
+					<% if @date < value && @date >= dates[index+1] %>
+						<% name = department.names[dates[index+1]] %>
+					<%end%>
+				<% end %>
+			<% elsif @date < value && @date >= dates[index+1] %>
+				<% name = department.names[dates[index+1]] %>
+			<%end%>
+	<% end%>
+	<tr>
+		<td>
+			<%= name %>
+		</td>
+	<% employees = department.bounds.where("start_date <= ? AND end_date >= ?", @date, @date).pluck(:employee_id).uniq %>
+	<% employees.each do |employee| %>
+		<td>
+			<%= Employee.find(employee).FIO %>
+		</td>
+	<%end%>
+	</tr>
+<% end %>
+</table>
+
+
+
+

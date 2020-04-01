@@ -1,0 +1,9 @@
+<%= form_for @department do |f| %>
+  <%= f.label 'Date of foundation' %><br>
+  <%= f.date_field :foundation, as: :date, value: f.object.try(:strftime,"%m/%d/%Y") %><br>
+
+  <%= f.label 'Date of disbandment' %><br>
+  <%= f.date_field :disbandment, as: :date, value: f.object.try(:strftime,"%m/%d/%Y") %><br>
+
+  <%= f.submit "Submit department" %>
+<% end %>

@@ -1,0 +1,14 @@
+<%= form_for Employee.new do |f| %>
+
+	<%= f.label "First name" %>
+	<%= f.text_field :first_name %> <br>
+
+	<%= f.label "Last name" %>
+	<%= f.text_field :last_name %> <br>
+
+	<%= f.label "Third name" %>
+	<%= f.text_field :third_name %> <br>
+
+  <%= f.submit "Submit employee" %>
+
+<% end %>
